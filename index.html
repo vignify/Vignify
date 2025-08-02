@@ -1,7 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJBZGX6YJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJBZGX6YJ0');
+</script> <!-- (Inside <head>) -->
+<style>
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+  .aos-animate[data-aos="shake"] {
+    animation: shake 0.6s ease-in-out;
+  }
+
+  .contact-button {
+    background-color: #facc15;
+    color: #1f2937;
+    font-weight: bold;
+  }
+
+  .contact-button:hover {
+    background-color: #eab308;
+  }
+
+  .services-section a {
+    text-decoration: none;
+    color: inherit;
+    border-top: 4px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .services-section a:hover {
+    transform: scale(1.05);
+    border-color: #facc15;
+  }
+
+  .blogs-preview a.contact-button {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  /* Floating WhatsApp Button */
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 100;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .floating-whatsapp:hover {
+    transform: scale(1.1);
+    background-color: #1ebe5b;
+  }
+
+  /* Floating Language Selector */
+  .floating-language {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 101;
+    background: white;
+    border: 2px solid #facc15;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+  }
+
+  .floating-language:hover {
+    transform: scale(1.05);
+    background-color: #fefcbf;
+  }
+</style>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Vignify Marketing Solutions helps your business grow online with SEO, PPC, Social Media Marketing, and more." />
@@ -56,19 +146,37 @@
   <!-- Navigation -->
   <header class="bg-gradient-to-r from-yellow-400 via-pink-300 to-pink-500 p-4 shadow-md sticky top-0 z-50">
   <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
     <a href="/" class="flex items-center space-x-2 group transition duration-300 ease-in-out">
-      <img src="vignifyoff.png" alt="Vignify Logo" 
-           class="h-8 w-auto transition duration-300 group-hover:scale-110">
+      <img src="logo.svg"Vignify Logo" class="h-8 w-auto transition duration-300 group-hover:scale-110">
       <span class="text-2xl font-bold text-black">Vignify</span>
     </a>
-    <nav class="space-x-4">
+
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menu-toggle" class="md:hidden text-black focus:outline-none text-2xl">
+      &#9776;
+    </button>
+
+    <!-- Navigation Links -->
+    <nav id="menu" class="hidden md:flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
       <a href="#about" class="hover:text-white font-medium text-black">About</a>
       <a href="#services" class="hover:text-white font-medium text-black">Services</a>
       <a href="#blogs" class="hover:text-white font-medium text-black">Blogs</a>
       <a href="#contact" class="hover:text-white font-medium text-black">Contact</a>
     </nav>
   </div>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </header>
+
 
 
   <!-- Hero -->
@@ -263,6 +371,28 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/917598901894" target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp fa-lg"></i>
+</a>
+
+<!-- Floating Language Selector -->
+<div class="floating-language">
+  <label for="language" class="mr-2 text-sm text-gray-700">🌐 Language:</label>
+  <select id="language" onchange="changeLanguage()" class="bg-white text-sm border-none focus:outline-none">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="ta">தமிழ்</option>
+    <option value="te">తెలుగు</option>
+  </select>
+</div>
+<script>
+  function changeLanguage() {
+    const selectedLang = document.getElementById('language').value;
+    alert(`Language switching coming soon. Selected: ${selectedLang}`);
+  }
+</script>
+
 </body>
 
 </html>
